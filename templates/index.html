@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusForge AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">⚡ FocusForge AI</div>
+        <div class="nav-links">
+            <a href="#planner">Planner</a>
+            <a href="#checkin">Check-in</a>
+            <a href="#progress">Progress</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your AI-Powered <span class="highlight">Study Accountability</span> Partner</h1>
+            <p>Stop losing track of your study plan. FocusForge AI keeps you on track, motivated, and moving forward — every single day.</p>
+            <button class="cta-btn" onclick="scrollToPlanner()">
+                🚀 Start Your Plan
+            </button>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-card">
+                <h2 id="streak-count">0</h2>
+                <p>Day Streak 🔥</p>
+            </div>
+            <div class="stat-card">
+                <h2 id="focus-score">0%</h2>
+                <p>Focus Score 💯</p>
+            </div>
+            <div class="stat-card">
+                <h2 id="days-left">--</h2>
+                <p>Days to Exam 📅</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- STUDY PLANNER SECTION -->
+    <section class="section" id="planner">
+        <h2>📚 Build Your Study Plan</h2>
+        <p class="section-sub">Tell FocusForge about your subjects and exam date</p>
+
+        <div class="card">
+            <div class="form-group">
+                <label>📖 Your Subjects (comma separated)</label>
+                <input type="text" id="subjects-input" 
+                    placeholder="e.g. Mathematics, Physics, Chemistry" />
+            </div>
+
+            <div class="form-group">
+                <label>📅 Exam Date</label>
+                <input type="date" id="exam-date" />
+            </div>
+
+            <div class="form-group">
+                <label>⏰ Daily Study Hours Available</label>
+                <input type="range" id="daily-hours" 
+                    min="1" max="12" value="4"
+                    oninput="updateHours(this.value)" />
+                <span id="hours-display">4 hours</span>
+            </div>
+
+            <div class="form-group">
+                <label>😴 Your Biggest Challenge</label>
+                <select id="challenge-select">
+                    <option value="motivation">Losing Motivation</option>
+                    <option value="focus">Staying Focused</option>
+                    <option value="time">Managing Time</option>
+                    <option value="understanding">Understanding Topics</option>
+                </select>
+            </div>
+
+            <button class="primary-btn" onclick="generatePlan()">
+                ⚡ Generate My AI Study Plan
+            </button>
+        </div>
+
+        <!-- PLAN OUTPUT -->
+        <div class="card hidden" id="plan-output">
+            <h3>✅ Your Personalized Study Plan</h3>
+            <div id="plan-content"></div>
+        </div>
+    </section>
+
+    <!-- DAILY CHECK-IN SECTION -->
+    <section class="section" id="checkin">
+        <h2>✅ Daily Check-In</h2>
+        <p class="section-sub">How did your study session go today?</p>
+
+        <div class="card checkin-card">
+            <p>Did you complete your study goal today?</p>
+            <div class="checkin-buttons">
+                <button class="yes-btn" onclick="submitCheckin(true)">
+                    ✅ Yes, I crushed it!
+                </button>
+                <button class="no-btn" onclick="submitCheckin(false)">
+                    😔 Not today
+                </button>
+            </div>
+            <div id="checkin-message" class="checkin-message hidden"></div>
+        </div>
+    </section>
+
+    <!-- PROGRESS SECTION -->
+    <section class="section" id="progress">
+        <h2>📊 Your Progress Dashboard</h2>
+        <p class="section-sub">Track your study consistency over time</p>
+
+        <div class="card">
+            <canvas id="progressChart" height="100"></canvas>
+        </div>
+    </section>
+
+    <!-- MOTIVATION BANNER -->
+    <div class="motivation-banner" id="motivation-banner">
+        <p id="motivation-text">💪 Every expert was once a beginner. Keep going!</p>
+        <button onclick="newMotivation()">Next Quote ➡️</button>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
