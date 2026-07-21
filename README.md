@@ -99,7 +99,7 @@ Based on your challenge, the AI provides:
 
 - **Backend**: Python Flask
 - **Frontend**: Vanilla JavaScript, HTML5, CSS3
-- **AI**: OpenAI GPT-3.5-turbo
+- **AI Partner**: IBM Bob (Primary Development Tool)
 - **Charts**: Chart.js
 - **Styling**: Custom CSS with gradient effects
 
