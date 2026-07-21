@@ -1,5 +1,8 @@
 # 🚀 FocusForge AI - Study Accountability Web App
 
+> Built for IBM AI Builders Challenge 2026
+> Powered by IBM Bob + Python Flask
+
 An AI-powered study accountability platform that helps students stay on track with personalized study schedules and motivational coaching.
 
 ## ✨ Features
